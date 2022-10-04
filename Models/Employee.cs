@@ -12,7 +12,7 @@ namespace NewGen.Models
         [Required]
         public int MyProperty { get; set; }
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
         [Required]
         public string Email { get; set; }
         public string Department { get; set; }
