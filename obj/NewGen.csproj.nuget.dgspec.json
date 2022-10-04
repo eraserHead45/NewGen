@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\c#\\NewGen\\NewGen.csproj": {}
+    "D:\\c#\\NewGen\\NewGen.csproj": {}
   },
   "projects": {
-    "d:\\c#\\NewGen\\NewGen.csproj": {
+    "D:\\c#\\NewGen\\NewGen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\c#\\NewGen\\NewGen.csproj",
+        "projectUniqueName": "D:\\c#\\NewGen\\NewGen.csproj",
         "projectName": "NewGen",
-        "projectPath": "d:\\c#\\NewGen\\NewGen.csproj",
+        "projectPath": "D:\\c#\\NewGen\\NewGen.csproj",
         "packagesPath": "C:\\Users\\saurabh\\.nuget\\packages\\",
-        "outputPath": "d:\\c#\\NewGen\\obj\\",
+        "outputPath": "D:\\c#\\NewGen\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
