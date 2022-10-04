@@ -10,7 +10,7 @@ namespace NewGen.Models
     {   
         [Key]
         [Required]
-        public int MyProperty { get; set; }
+        public int ID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
