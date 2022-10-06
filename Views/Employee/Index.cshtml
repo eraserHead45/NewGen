@@ -5,7 +5,7 @@
 }
 <h2>Employee List</h2>
 
-<style>
+@* <style>
     .content-table{
         border-collapse: collapse;
         margin: 25px 0;
@@ -42,9 +42,9 @@
         font-weight: bold;
         color: blueviolet;
     }
-</style>
-<table>
-    <thead class="content-table">
+</style> *@
+<table class="table table-bordered table-striped" style="width: 100%;">
+    <thead>
         <tr>
             <th>
                 EMPLOYEE ID
@@ -59,14 +59,14 @@
         <tbody>
             @foreach (var obj in Model)
             {
-                <tr class="active-row">
-                    <td>
+                <tr>
+                    <td width="50%">
                         @obj.ID                               
                     </td>
-                    <td>
+                    <td width="50%">
                         @obj.Name            
                     </td>
-                    <td>
+                    <td width="30%">
                         @obj.Department
                     </td>
                 </tr>

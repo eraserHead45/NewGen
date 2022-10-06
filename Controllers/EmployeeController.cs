@@ -24,11 +24,5 @@ namespace NewGen.Controllers
             IEnumerable<Employee> ObjEmployee = _Db.Employees;
             return View(ObjEmployee);
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
     }
 }
