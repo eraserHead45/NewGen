@@ -11,8 +11,8 @@ using NewGen.Data;
 namespace NewGen.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221004201004_create")]
-    partial class create
+    [Migration("20221006042915_Employee_Details")]
+    partial class Employee_Details
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,11 +25,11 @@ namespace NewGen.Migrations
 
             modelBuilder.Entity("NewGen.Models.Employee", b =>
                 {
-                    b.Property<int>("MyProperty")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MyProperty"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("Department")
                         .IsRequired()
@@ -43,7 +43,7 @@ namespace NewGen.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MyProperty");
+                    b.HasKey("ID");
 
                     b.ToTable("Employees");
                 });

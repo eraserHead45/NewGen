@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r/s8r9gzY2UM6RWQZnQqtM1m1ruKU2QfUDlFGKSHm0A=",
+  "Hash": "oImuU/DrQ16LF4j/dlLkt/uBaLT+zl7UjaLD+n9gkbA=",
   "Source": "NewGen",
   "BasePath": "_content/NewGen",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\c#\\NewGen\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\NewGen.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\c#\\NewGen\\wwwroot\\css\\BootWatchTheme.css",
+      "SourceId": "NewGen",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\c#\\NewGen\\wwwroot\\",
+      "BasePath": "_content/NewGen",
+      "RelativePath": "css/BootWatchTheme.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\BootWatchTheme.css"
     },
     {
       "Identity": "D:\\c#\\NewGen\\wwwroot\\css\\site.css",

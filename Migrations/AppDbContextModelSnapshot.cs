@@ -23,11 +23,11 @@ namespace NewGen.Migrations
 
             modelBuilder.Entity("NewGen.Models.Employee", b =>
                 {
-                    b.Property<int>("MyProperty")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MyProperty"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("Department")
                         .IsRequired()
@@ -41,7 +41,7 @@ namespace NewGen.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MyProperty");
+                    b.HasKey("ID");
 
                     b.ToTable("Employees");
                 });

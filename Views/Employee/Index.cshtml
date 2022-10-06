@@ -1,0 +1,76 @@
+@Model IEnumerable<Employee> 
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Employee List</h2>
+
+<style>
+    .content-table{
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+    } 
+
+    .content-table thead tr{
+        background-color: blueviolet;
+        color: whitesmoke;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td{
+        padding: 12px 15px;
+    }
+
+    .content-table tbody tr{
+        border-bottom: 1px solid lightgrey;
+    }
+
+    .content-table tbody tr:nth-of-type(even){
+        background-color: lightgrey;
+    }
+
+    .content-table tbody tr:last-of-type{
+        border-bottom: 2px solid blueviolet;
+    }
+
+    .content-table tbody tr.active-row{
+        font-weight: bold;
+        color: blueviolet;
+    }
+</style>
+<table>
+    <thead class="content-table">
+        <tr>
+            <th>
+                EMPLOYEE ID
+            </th>
+            <th>
+                NAME
+            </th>
+            <th>
+                DEPARTMENT
+            </th>
+        </tr>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr class="active-row">
+                    <td>
+                        @obj.ID                               
+                    </td>
+                    <td>
+                        @obj.Name            
+                    </td>
+                    <td>
+                        @obj.Department
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </thead>
+</table>

@@ -4,7 +4,7 @@
 
 namespace NewGen.Migrations
 {
-    public partial class create : Migration
+    public partial class Employee_Details : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
