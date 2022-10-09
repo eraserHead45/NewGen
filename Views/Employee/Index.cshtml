@@ -1,21 +1,36 @@
-@Model IEnumerable<Employee> 
+@model IEnumerable<Employee> 
 
 @{
     ViewData["Title"] = "Index";
 }
-<h2>Employee List</h2>
 
-@* <style>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h3 class="text-primary">Employee List</h3>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Employee" asp-action="Add" class="btn btn-primary">
+                <i class="bi bi-person-plus-fill"></i> &nbsp; Add New Employee
+            </a>
+        </div>
+    </div>
+</div>
+<br/>
+
+<style>
     .content-table{
         border-collapse: collapse;
         margin: 25px 0;
         font-size: 0.9em;
         min-width: 400px;
         border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 20);
     } 
 
     .content-table thead tr{
-        background-color: blueviolet;
+        background-color: blueviolet; 
         color: whitesmoke;
         text-align: left;
         font-weight: bold;
@@ -42,8 +57,8 @@
         font-weight: bold;
         color: blueviolet;
     }
-</style> *@
-<table class="table table-bordered table-striped" style="width: 100%;">
+</style>
+<table class="content-table">
     <thead>
         <tr>
             <th>
@@ -59,14 +74,14 @@
         <tbody>
             @foreach (var obj in Model)
             {
-                <tr>
-                    <td width="50%">
+                <tr class="active-row">
+                    <td>
                         @obj.ID                               
                     </td>
-                    <td width="50%">
+                    <td>
                         @obj.Name            
                     </td>
-                    <td width="30%">
+                    <td>
                         @obj.Department
                     </td>
                 </tr>

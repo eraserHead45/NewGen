@@ -24,5 +24,21 @@ namespace NewGen.Controllers
             IEnumerable<Employee> ObjEmployee = _Db.Employees;
             return View(ObjEmployee);
         }
+
+        //GET
+        [HttpGet]
+        public IActionResult Add()
+        {   
+            return View();
+        }
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Add(Employee obj)
+        {   
+            _Db.Employees.Add(obj);
+            _Db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
