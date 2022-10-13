@@ -10,7 +10,6 @@ using NewGen.Models;
 
 namespace NewGen.Controllers
 {
-    [Route("[controller]")]
     public class EmployeeController : Controller
     {
         private readonly AppDbContext _Db;
@@ -36,9 +35,50 @@ namespace NewGen.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Add(Employee obj)
         {   
-            _Db.Employees.Add(obj);
-            _Db.SaveChanges();
-            return RedirectToAction("Index");
+            if(obj.Name == obj.Email)
+            {
+                ModelState.AddModelError("Name","Email cannot exactly match the Name.");
+            }
+            if(ModelState.IsValid)
+            {
+                _Db.Employees.Add(obj);
+                _Db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+        //GET
+        public IActionResult Edit(int? Id)
+        {   
+            if(Id==null || Id==0)
+            {
+                return NotFound();
+            }
+
+            var employeeFromDb = _Db.Employees.Find(Id);
+
+            if(employeeFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(employeeFromDb);
+        }
+         //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Employee obj)
+        {   
+            if(obj.Name == obj.Email)
+            {
+                ModelState.AddModelError("Name","Email cannot exactly match the Name.");
+            }
+            if(ModelState.IsValid)
+            {
+                _Db.Employees.Update(obj);
+                _Db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
     }
 }

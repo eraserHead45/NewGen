@@ -1,4 +1,4 @@
-@model IEnumerable<Employee> 
+@model IEnumerable<Employee>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,10 +16,10 @@
         </div>
     </div>
 </div>
-<br/>
+<br />
 
 <style>
-    .content-table{
+    .content-table {
         border-collapse: collapse;
         margin: 25px 0;
         font-size: 0.9em;
@@ -27,33 +27,33 @@
         border-radius: 5px 5px 0 0;
         overflow: hidden;
         box-shadow: 0 0 20px rgba(0, 0, 0, 20);
-    } 
+    }
 
-    .content-table thead tr{
-        background-color: blueviolet; 
+    .content-table thead tr {
+        background-color: blueviolet;
         color: whitesmoke;
         text-align: left;
         font-weight: bold;
     }
 
     .content-table th,
-    .content-table td{
+    .content-table td {
         padding: 12px 15px;
     }
 
-    .content-table tbody tr{
+    .content-table tbody tr {
         border-bottom: 1px solid lightgrey;
     }
 
-    .content-table tbody tr:nth-of-type(even){
+    .content-table tbody tr:nth-of-type(even) {
         background-color: lightgrey;
     }
 
-    .content-table tbody tr:last-of-type{
+    .content-table tbody tr:last-of-type {
         border-bottom: 2px solid blueviolet;
     }
 
-    .content-table tbody tr.active-row{
+    .content-table tbody tr.active-row {
         font-weight: bold;
         color: blueviolet;
     }
@@ -70,22 +70,28 @@
             <th>
                 DEPARTMENT
             </th>
+            <th></th>
         </tr>
-        <tbody>
-            @foreach (var obj in Model)
-            {
-                <tr class="active-row">
-                    <td>
-                        @obj.ID                               
-                    </td>
-                    <td>
-                        @obj.Name            
-                    </td>
-                    <td>
-                        @obj.Department
-                    </td>
-                </tr>
-            }
-        </tbody>
     </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr class="active-row">
+                <td>
+                    @obj.ID
+                </td>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.Department
+                </td>
+                <td>
+                    <div class="w-25 btn-group" role="group">
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-Id="@obj.ID" class="btn btn-primary mx-1"><i class="bi bi-pencil-fill"></i>Edit</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
