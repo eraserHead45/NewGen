@@ -43,6 +43,7 @@ namespace NewGen.Controllers
             {
                 _Db.Employees.Add(obj);
                 _Db.SaveChanges();
+                TempData["success"] = "New Employee Added Successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -76,9 +77,42 @@ namespace NewGen.Controllers
             {
                 _Db.Employees.Update(obj);
                 _Db.SaveChanges();
+                 TempData["success"] = "Employee Details Edited Successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
+        }
+         //GET
+        public IActionResult Delete(int? Id)
+        {
+           if(Id==null || Id==0)
+            {
+                return NotFound();
+            }
+
+            var employeeFromDb = _Db.Employees.Find(Id);
+
+            if(employeeFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(employeeFromDb); 
+        }
+         //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? Id)
+        {   
+            var obj = _Db.Employees.Find(Id);
+            if(Id==null)
+            {
+                return NotFound();
+            }
+
+            _Db.Employees.Remove(obj);
+            _Db.SaveChanges();
+             TempData["success"] = "Employee Records Deleted Successfully";
+            return RedirectToAction("Index");
         }
     }
 }

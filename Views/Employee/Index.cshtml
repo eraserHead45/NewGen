@@ -21,7 +21,7 @@
 <style>
     .content-table {
         border-collapse: collapse;
-        margin: 25px 0;
+        margin: 0;
         font-size: 0.9em;
         min-width: 400px;
         border-radius: 5px 5px 0 0;
@@ -38,7 +38,7 @@
 
     .content-table th,
     .content-table td {
-        padding: 12px 15px;
+        padding: 1px 50px;
     }
 
     .content-table tbody tr {
@@ -87,8 +87,9 @@
                     @obj.Department
                 </td>
                 <td>
-                    <div class="w-25 btn-group" role="group">
-                        <a asp-controller="Employee" asp-action="Edit" asp-route-Id="@obj.ID" class="btn btn-primary mx-1"><i class="bi bi-pencil-fill"></i>Edit</a>
+                    <div class="w-auto btn-group" role="group">
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-Id="@obj.ID" class="btn btn-primary mx-2"><i class="bi bi-pencil-fill"></i>Edit</a>
+                        <a asp-controller="Employee" asp-action="Delete" asp-route-Id="@obj.ID" class="btn btn-danger mx-2"><i class="bi bi-person-dash"></i>Delete</a>
                     </div>
                 </td>
             </tr>
