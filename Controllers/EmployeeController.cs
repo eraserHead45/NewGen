@@ -7,20 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NewGen.Data;
 using NewGen.Models;
+using NewGen.Repository.IRepository;
 
 namespace NewGen.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly AppDbContext _Db;
-        public EmployeeController(AppDbContext Db)
+        private readonly IUnitOfWork _UnitOfWork;
+        public EmployeeController(IUnitOfWork unitOfWork)
         {
-            _Db = Db;
+            _UnitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {   
-            IEnumerable<Employee> ObjEmployee = _Db.Employees;
+            IEnumerable<Employee> ObjEmployee = _UnitOfWork.Employee.GetAll();
             return View(ObjEmployee);
         }
 
@@ -41,8 +42,8 @@ namespace NewGen.Controllers
             }
             if(ModelState.IsValid)
             {
-                _Db.Employees.Add(obj);
-                _Db.SaveChanges();
+                _UnitOfWork.Employee.Add(obj);
+                _UnitOfWork.Save();
                 TempData["success"] = "New Employee Added Successfully";
                 return RedirectToAction("Index");
             }
@@ -55,8 +56,8 @@ namespace NewGen.Controllers
             {
                 return NotFound();
             }
-
-            var employeeFromDb = _Db.Employees.Find(Id);
+ 
+            var employeeFromDb = _UnitOfWork.Employee.GetFirstOrDefault(u=>u.ID == Id);
 
             if(employeeFromDb == null)
             {
@@ -75,8 +76,8 @@ namespace NewGen.Controllers
             }
             if(ModelState.IsValid)
             {
-                _Db.Employees.Update(obj);
-                _Db.SaveChanges();
+                _UnitOfWork.Employee.Edit(obj);
+                _UnitOfWork.Save();
                  TempData["success"] = "Employee Details Edited Successfully";
                 return RedirectToAction("Index");
             }
@@ -90,7 +91,7 @@ namespace NewGen.Controllers
                 return NotFound();
             }
 
-            var employeeFromDb = _Db.Employees.Find(Id);
+            var employeeFromDb = _UnitOfWork.Employee.GetFirstOrDefault(u=>u.ID == Id);
 
             if(employeeFromDb == null)
             {
@@ -103,14 +104,14 @@ namespace NewGen.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? Id)
         {   
-            var obj = _Db.Employees.Find(Id);
+            var obj = _UnitOfWork.Employee.GetFirstOrDefault(u=>u.ID == Id);
             if(Id==null)
             {
                 return NotFound();
             }
 
-            _Db.Employees.Remove(obj);
-            _Db.SaveChanges();
+            _UnitOfWork.Employee.Remove(obj);
+            _UnitOfWork.Save();
              TempData["success"] = "Employee Records Deleted Successfully";
             return RedirectToAction("Index");
         }

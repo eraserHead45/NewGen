@@ -17,5 +17,6 @@ namespace NewGen.Models
         public string Email { get; set; }
         [Required]
         public string Department { get; set; }
+        public string UserProfile { get; set; }
     }
 }
