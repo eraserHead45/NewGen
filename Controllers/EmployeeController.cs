@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NewGen.Data;
@@ -10,7 +11,8 @@ using NewGen.Models;
 using NewGen.Repository.IRepository;
 
 namespace NewGen.Controllers
-{
+{   
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IUnitOfWork _UnitOfWork;

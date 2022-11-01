@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<IdentityUser> SignInManager;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,6 +30,27 @@
                             <a class="nav-link text-white" asp-controller="Employee" asp-action="Index">List</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav flex-grow-1 nav justify-content-end">
+                       @if(SignInManager.IsSignedIn(User))
+                       {
+                        <li class="nav-item">
+                            <form method="post" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">
+                                    Logout @User.Identity.Name
+                                </button>
+                            </form>
+                        </li>
+                       }
+                       else
+                       {
+                         <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                       }
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -35,6 +58,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             <partial name="_Notification" />
+            @RenderSection("Upload", required: false)
             @RenderBody()
         </main>
     </div>
@@ -55,6 +79,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)   
 </body>
 </html>
