@@ -31,6 +31,7 @@ namespace NewGen.Controllers
            return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task <IActionResult> Register(Register model)
         {
              if(ModelState.IsValid)
@@ -52,17 +53,15 @@ namespace NewGen.Controllers
             return View(model);  
         }
         [HttpGet]
-        public IActionResult Login(string? returnUrl)
+        public IActionResult Login(string returnUrl)
         {   
-           ViewData["ReturnUrl"] = returnUrl;
-           return View();
+           var model = new Login() { ReturnUrl = returnUrl };
+           return View(model);
         }
         [HttpPost]
-        public async Task <IActionResult> Login(Login model, string? returnUrl)
+        [ValidateAntiForgeryToken]
+        public async Task <IActionResult> Login(Login model, string returnUrl)
         {   
-            ViewData["ReturnUrl"] = returnUrl;
-            returnUrl = returnUrl ?? Url.Content("~/");
-
             if(ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.Username, model.Password,model.RememberMe,false);
