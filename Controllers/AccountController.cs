@@ -53,15 +53,18 @@ namespace NewGen.Controllers
             return View(model);  
         }
         [HttpGet]
-        public IActionResult Login(string returnUrl)
-        {   
-           var model = new Login() { ReturnUrl = returnUrl };
-           return View(model);
+        public IActionResult Login(string? returnUrl)
+        {  
+           ViewData["ReturnUrl"] = returnUrl;  
+           return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task <IActionResult> Login(Login model, string returnUrl)
+        public async Task <IActionResult> Login(Login model, string? returnUrl)
         {   
+            ViewData["ReturnUrl"] = returnUrl;
+            returnUrl = returnUrl ?? Url.Content("~/");
+            
             if(ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.Username, model.Password,model.RememberMe,false);
