@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oImuU/DrQ16LF4j/dlLkt/uBaLT+zl7UjaLD+n9gkbA=",
+  "Hash": "ORQTKptt4C5zF02VslXnxqZE1OQsnTyC+wSwTGYLvCU=",
   "Source": "NewGen",
   "BasePath": "_content/NewGen",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\c#\\NewGen\\wwwroot\\security.png",
+      "SourceId": "NewGen",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\c#\\NewGen\\wwwroot\\",
+      "BasePath": "_content/NewGen",
+      "RelativePath": "security.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\security.png"
     }
   ]
 }
